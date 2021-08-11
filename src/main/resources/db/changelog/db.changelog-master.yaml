@@ -1,0 +1,4 @@
+databaseChangeLog:
+
+  - include:
+      file: classpath*:db/changelog/changes/20210808002931-create-numbers-factors-table.yaml

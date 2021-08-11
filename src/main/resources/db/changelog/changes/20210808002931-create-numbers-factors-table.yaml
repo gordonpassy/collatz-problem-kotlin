@@ -1,0 +1,104 @@
+databaseChangeLog:
+- changeSet:
+    id: 1628371778240-1
+    author: gordonochieng (generated)
+    changes:
+    - createTable:
+        columns:
+        - column:
+            constraints:
+              nullable: false
+              primaryKey: true
+              primaryKeyName: factorsPK
+            name: id
+            type: VARCHAR(255)
+        - column:
+            constraints:
+              nullable: false
+            defaultValueComputed: CURRENT_TIMESTAMP
+            name: created_at
+            type: datetime
+        - column:
+            constraints:
+              nullable: false
+            defaultValueComputed: CURRENT_TIMESTAMP
+            name: updated_at
+            type: datetime
+        - column:
+            constraints:
+              nullable: false
+            name: version
+            type: BIGINT
+        - column:
+            name: factor
+            type: BIGINT
+        - column:
+            name: factor_index
+            type: BIGINT
+        - column:
+            constraints:
+              nullable: false
+            name: number_id
+            type: VARCHAR(255)
+        tableName: factors
+- changeSet:
+    id: 1628371778240-2
+    author: gordonochieng (generated)
+    changes:
+    - createTable:
+        columns:
+        - column:
+            constraints:
+              nullable: false
+              primaryKey: true
+              primaryKeyName: numbersPK
+            name: id
+            type: VARCHAR(255)
+        - column:
+            constraints:
+              nullable: false
+            defaultValueComputed: CURRENT_TIMESTAMP
+            name: created_at
+            type: datetime
+        - column:
+            constraints:
+              nullable: false
+            defaultValueComputed: CURRENT_TIMESTAMP
+            name: updated_at
+            type: datetime
+        - column:
+            constraints:
+              nullable: false
+            name: version
+            type: BIGINT
+        - column:
+            name: hops
+            type: BIGINT
+        - column:
+            constraints:
+              nullable: false
+            name: number
+            type: BIGINT
+        tableName: numbers
+- changeSet:
+    id: 1628371778240-3
+    author: gordonochieng (generated)
+    changes:
+    - addUniqueConstraint:
+        columnNames: number
+        constraintName: UC_NUMBERSNUMBER_COL
+        tableName: numbers
+- changeSet:
+    id: 1628371778240-4
+    author: gordonochieng (generated)
+    changes:
+    - addForeignKeyConstraint:
+        baseColumnNames: number_id
+        baseTableName: factors
+        constraintName: FKpl3dxd6rov0wrkaspjlkaky24
+        deferrable: false
+        initiallyDeferred: false
+        referencedColumnNames: id
+        referencedTableName: numbers
+        validate: true
+
